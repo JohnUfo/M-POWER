@@ -542,5 +542,200 @@ Robust models that work well with defaults.
         }))
       }
     ]
+  },
+  {
+    id: 'dl',
+    title: CourseType.DL,
+    description: 'Learn the foundations of Deep Learning and Neural Networks.',
+    icon: 'Cpu',
+    lessons: [
+      {
+        id: 'dl-intro-neuron',
+        title: 'The Linear Unit',
+        visualId: 'neuron',
+        content: `1️⃣ Big picture: what is this lesson about?
+We begin with the fundamental component of a neural network: the individual neuron. A neuron with one input performs a simple linear computation: y = wx + b.
+
+2️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: The 'weights' (w) which determine the importance of an input.
+- Noise: Random initialization before training.
+A neural network "learns" by modifying its weights to isolate patterns from data.
+
+3️⃣ Bias and Multiple Inputs
+The bias (b) allows a neuron to modify output independently of inputs. For multiple inputs, we sum them all up: y = w0x0 + w1x1 + ... + b.
+
+✅ Final Summary
+- Neurons are the building blocks of Deep Learning.
+- Single neuron models are simple linear models (lines, planes, hyperplanes).`,
+        tasks: Array.from({ length: 15 }, (_, i) => ({
+          id: `task_${i + 1}`,
+          description: `Task ${i + 1}`,
+          instruction: [
+            "Define weight w=2.5 and bias b=90.", "Calculate y for input x=5.", "Print the value of y.",
+            "Define x0=1, x1=2, x2=3.", "Define weights w0=0.5, w1=1.0, w2=1.5 and bias b=1.",
+            "Calculate linear output: w0*x0 + w1*x1 + w2*x2 + b.", "Import tensorflow and keras (comment).",
+            "Define input_shape=[3] in a comment.", "Explain bias in one sentence.",
+            "Calculate y = 1.2 * 10 + 5.0.", "Print 'Cereals: sugars=5, cal=102.5'.",
+            "Explain weights as 'slopes'.", "Define a variable 'units' = 1.",
+            "Check length of input list [1, 2, 3].", "Final: Formula for 3 inputs."
+          ][i],
+          initialCode: ""
+        }))
+      },
+      {
+        id: 'dl-deep-networks',
+        title: 'Deep Neural Networks',
+        visualId: 'indentation',
+        content: `1️⃣ Big picture: what is this lesson about?
+Modularity is key. By stacking simpler functional units into layers, we can build complex models.
+
+2️⃣ The Dense Layer
+When we collect together linear units having a common set of inputs, we get a Dense Layer. A deep stack of layers allows the network to transform data in increasingly complex ways.
+
+3️⃣ Activation Functions
+Without activation functions, neural networks are just linear models. The Rectified Linear Unit (ReLU) function max(0, x) adds the necessary nonlinearity to fit curves.
+
+✅ Final Summary
+- Sequential models connect layers in order.
+- Hidden layers are the layers between input and output.`,
+        tasks: Array.from({ length: 15 }, (_, i) => ({
+          id: `task_${i + 1}`,
+          description: `Task ${i + 1}`,
+          instruction: [
+            "Import keras.layers.", "Explain ReLU: max(0, x).", "Calculate max(0, -5).", "Calculate max(0, 10).",
+            "Define 'hidden_units' = 512.", "Explain 'Dense' in a comment.", "Define units=4 for a layer.",
+            "Define activation='relu'.", "Explain 'Sequential' in a comment.", "Define input_shape=[2].",
+            "Calculate output of ReLU for input -10.", "Predict: 2 dense layers = 1 dense layer? (No).",
+            "Identify the 'hidden' layer index in [4, 4, 1].", "Print 'Building Sequential Model...'.",
+            "Final: Diagram of a 2-layer network."
+          ][i],
+          initialCode: ""
+        }))
+      },
+      {
+        id: 'dl-sgd',
+        title: 'Stochastic Gradient Descent',
+        visualId: 'loop-iter',
+        content: `1️⃣ Big picture: what is this lesson about?
+How neural networks learn. We use an Optimizer to adjust weights based on a Loss Function.
+
+2️⃣ Loss Functions
+The Loss Function measures the disparity between true targets and model predictions. For regression, we commonly use Mean Absolute Error (MAE).
+
+3️⃣ The Optimizer (SGD)
+Stochastic Gradient Descent is an iterative algorithm that trains the network in minibatches. Adam is a great general-purpose optimizer that is self-tuning.
+
+✅ Final Summary
+- Epoch: One complete pass through the training data.
+- Batch: A small sample of training data used for one weight update.`,
+        tasks: Array.from({ length: 15 }, (_, i) => ({
+          id: `task_${i + 1}`,
+          description: `Task ${i + 1}`,
+          instruction: [
+            "Explain 'optimizer' in comment.", "Explain 'loss' in comment.", "Calculate MAE of [10] vs [12].",
+            "Define batch_size = 256.", "Define epochs = 10.", "Explain 'minibatch'.",
+            "Calculate abs(100 - 95).", "Calculate average error of [5, 10, 15].", "Explain 'learning rate'.",
+            "Identify 'Adam' as an optimizer.", "Set optimizer='adam' in a comment.",
+            "Set loss='mae' in a comment.", "Explain SGD acronym (comment).", "Calculate steps for 1000 items, batch 100.",
+            "Final: SGD Lifecycle (Define, Compile, Fit)."
+          ][i],
+          initialCode: ""
+        }))
+      },
+      {
+        id: 'dl-overfitting',
+        title: 'Overfitting and Underfitting',
+        visualId: 'loss-curves',
+        content: `1️⃣ Big picture: what is this lesson about?
+Interpreting learning curves. We want to distinguish between 'signal' (general patterns) and 'noise' (random fluctuations).
+
+2️⃣ Signal vs Noise
+Training loss decreases with both signal and noise. Validation loss only decreases when the model learns signal. A gap between the curves indicates noise/overfitting.
+
+3️⃣ Early Stopping
+To prevent overfitting, we stop training when validation loss stops decreasing. This finds the "Sweet Spot".
+
+✅ Final Summary
+- Increase Capacity (wider/deeper) to fix underfitting.
+- Use Early Stopping to fix overfitting.`,
+        tasks: Array.from({ length: 15 }, (_, i) => ({
+          id: `task_${i + 1}`,
+          description: `Task ${i + 1}`,
+          instruction: [
+            "Import EarlyStopping.", "Explain 'capacity'.", "Explain 'patience' in EarlyStopping.",
+            "Explain 'min_delta'.", "Plot train vs val loss (comment).", "Identify overfitting on curve.",
+            "Define wider model: Dense(32).", "Define deeper model: 2 Layers of 16.",
+            "Set restore_best_weights=True.", "Calculate gap: val_loss - train_loss.",
+            "Explain 'Signal'.", "Explain 'Noise'.", "Explain 'Underfitting'.",
+            "Predict: larger patience = longer training?", "Final: EarlyStopping config."
+          ][i],
+          initialCode: ""
+        }))
+      },
+      {
+        id: 'dl-dropout-batchnorm',
+        title: 'Dropout and Batch Normalization',
+        visualId: 'signal-noise',
+        content: `1️⃣ Big picture: what is this lesson about?
+Advanced layers to improve model stability and generalization.
+
+2️⃣ Dropout
+Randomly "dropping out" neurons during training to break up "conspiracies" of weights. This forces the network to learn more robust, general patterns.
+
+3️⃣ Batch Normalization
+Rescaling activations within the network to stabilize training. It coordinates the scale of features and helps prevent training from getting stuck.
+
+✅ Final Summary
+- Dropout corrects overfitting.
+- Batchnorm corrects slow or unstable training.`,
+        tasks: Array.from({ length: 15 }, (_, i) => ({
+          id: `task_${i + 1}`,
+          description: `Task ${i + 1}`,
+          instruction: [
+            "Import Dropout and BatchNormalization.", "Define dropout rate = 0.3.",
+            "Explain 'conspiracy of weights'.", "Explain batch normalization benefits.",
+            "Place Dropout before a Dense layer.", "Place BatchNorm after a Dense layer.",
+            "Explain why we normalize data.", "Predict: BatchNorm -> fewer epochs?",
+            "Identify Dropout's role in ensemble learning.", "Set units to 1024.",
+            "Combine Dropout(0.3) with Dense(1024).", "Explain 'StandardScaler' alternative.",
+            "Identify if BatchNorm has neurons (No).", "Check help(layers.Dropout).",
+            "Final: Architecture with Dropout and BatchNorm."
+          ][i],
+          initialCode: ""
+        }))
+      },
+      {
+        id: 'dl-binary-classification',
+        title: 'Binary Classification',
+        visualId: 'decision-tree',
+        content: `1️⃣ Big picture: what is this lesson about?
+Applying neural networks to predict one of two classes (Yes/No, 0/1).
+
+2️⃣ Cross-Entropy and Accuracy
+Accuracy is intuitive but poor for SGD. We use Cross-Entropy as a loss function because it measures the distance between probability distributions.
+
+3️⃣ The Sigmoid Function
+To turn raw numbers into probabilities (0 to 1), we use the Sigmoid activation in the final layer.
+
+✅ Final Summary
+- Final layer: layers.Dense(1, activation='sigmoid').
+- loss: 'binary_crossentropy', metrics: ['binary_accuracy'].`,
+        tasks: Array.from({ length: 15 }, (_, i) => ({
+          id: `task_${i + 1}`,
+          description: `Task ${i + 1}`,
+          instruction: [
+            "Explain 'binary classification'.", "Define activation='sigmoid'.",
+            "Compare accuracy vs cross-entropy.", "Calculate rounding 0.7 to class.",
+            "Calculate rounding 0.3 to class.", "Set loss='binary_crossentropy'.",
+            "Set metrics=['binary_accuracy'].", "Explain why sigmoid is S-shaped.",
+            "Identify threshold (usually 0.5).", "Print 'Mapping strings to labels 0 and 1'.",
+            "Define a model with sigmoid output.", "Explain cross-entropy penalty.",
+            "Calculate distance from 1.0 probability.", "Check type(True) as int.",
+            "Final: Classification training config."
+          ][i],
+          initialCode: ""
+        }))
+      }
+    ]
   }
 ];
