@@ -1,7 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-// Added missing Activity icon to the import list
-import { Binary, Box, Crosshair, Filter, Code, ArrowRight, Zap, MessageSquare, Terminal, TrendingDown, Layers, Search, List, RotateCw, Key, Package, Eye, EyeOff, Activity } from 'lucide-react';
+import { Binary, Box, Crosshair, Filter, Code, ArrowRight, Zap, MessageSquare, Terminal, TrendingDown, Layers, Search, List, RotateCw, Key, Package, Eye, EyeOff, Activity, Percent, Divide } from 'lucide-react';
 import { LessonSection } from '../types';
 
 interface VisualProps {
@@ -111,6 +110,29 @@ const Visuals: React.FC<VisualProps> = ({ id }) => {
             <div className="w-20 h-20 bg-blue-600 border-2 border-blue-400 rounded-2xl flex items-center justify-center text-3xl font-black text-white shadow-xl shadow-blue-500/20">15</div>
             <div className="absolute -top-8 left-1/2 -translate-x-1/2 text-[7px] font-black text-emerald-400 uppercase tracking-widest">Result</div>
           </div>
+        </div>
+      ));
+
+    case 'division':
+      return renderVisualArea("Division Logic", "Compare float result vs whole number floor division.", (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full items-center px-4">
+           <div className="p-4 bg-slate-900 border border-slate-800 rounded-2xl text-center" onMouseEnter={() => setHotspot("True Division", "The / operator returns an exact decimal (float).")}>
+              <div className="text-2xl font-black text-white mb-2">5 / 2</div>
+              <ArrowRight className="mx-auto text-blue-500 rotate-90" />
+              <div className="mt-2 py-3 bg-blue-600 rounded-xl font-mono font-black text-white">2.5</div>
+              <span className="text-[8px] font-black text-blue-300 uppercase mt-2 block">Float Result</span>
+           </div>
+           
+           <div className="flex justify-center">
+              <Divide size={32} className="text-slate-700" />
+           </div>
+
+           <div className="p-4 bg-slate-900 border border-slate-800 rounded-2xl text-center" onMouseEnter={() => setHotspot("Floor Division", "The // operator removes decimals and returns an integer.")}>
+              <div className="text-2xl font-black text-white mb-2">5 // 2</div>
+              <ArrowRight className="mx-auto text-rose-500 rotate-90" />
+              <div className="mt-2 py-3 bg-rose-600 rounded-xl font-mono font-black text-white">2</div>
+              <span className="text-[8px] font-black text-rose-300 uppercase mt-2 block">Int Result</span>
+           </div>
         </div>
       ));
 
@@ -336,6 +358,12 @@ const Visuals: React.FC<VisualProps> = ({ id }) => {
 const X: React.FC<{className?: string, size?: number}> = ({className, size}) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}>
     <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
+const Activity: React.FC<{className?: string, size?: number}> = ({className, size}) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
   </svg>
 );
 

@@ -13,20 +13,26 @@ export const COURSES: Course[] = [
         title: 'Arithmetic and Variables',
         visualId: 'arithmetic',
         content: `1️⃣ Big picture: what is this lesson about?
-One of the simplest and most important tasks you can ask a computer to do is to print a message. In Python, we do this with print(). We also use Python as a calculator. To save values for later, we use variables.
+Python is a powerful calculator. We use print() to see results and variables to store them.
+Example:
+x = 10 + 5
+print(x) # Output: 15
 
 2️⃣ Signal vs Noise (VERY IMPORTANT)
-- Signal: The exact commands like print() and math operators (+, -, *, /).
-- Noise: Forgetting quotes around text or using the wrong math symbol.
-If you miss a quote, the computer hears "Noise" and crashes.
+- Signal: Exact operators like + and *.
+- Noise: Text without quotes.
+Wrong: print(Hello)
+Right: print("Hello")
 
 3️⃣ Variables as Containers
-Variables allow you to save the result of a calculation to work with it later. Think of them as named containers. Use the = sign to assign a value to a name.
+Assignment (=) is not math equality. It means "put this value into this name".
+Example:
+score = 0
+score = score + 1 # Update score to 1
 
 ✅ Final Summary
 - print() shows output.
-- Variable names can't have spaces and must be descriptive.
-- Python follows PEMDAS (Parentheses, Exponents, Multi/Div, Add/Sub).`,
+- Variable names can't have spaces.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -46,19 +52,27 @@ Variables allow you to save the result of a calculation to work with it later. T
         title: 'Functions',
         visualId: 'func-scope',
         content: `1️⃣ Big picture: what is this lesson about?
-Functions are reusable blocks of code that perform a specific task. You've already used print() and help(). Now you'll learn to build your own tools.
+Functions are reusable code recipes.
+Example:
+def cook(food):
+    print("Cooking " + food)
+
+cook("Pizza") # Output: Cooking Pizza
 
 2️⃣ Signal vs Noise (VERY IMPORTANT)
-- Signal: The 'def' keyword and the indented block.
-- Noise: Forgetting the colon (:) or the indentation.
-The colon (:) tells Python "a code block starts here".
+- Signal: The 'def' keyword and colons.
+- Noise: Forgetting to indent the code inside the function.
 
 3️⃣ Return Values
-Most functions perform a calculation and 'return' the result back to you. If a function doesn't have a return statement, it returns None.
+return gives a value back to whoever called the function.
+Example:
+def add(a, b):
+    return a + b
+result = add(5, 5) # result is 10
 
 ✅ Final Summary
-- def function_name(parameters):
-- return sends data back to the caller.`,
+- Functions avoid repeating code.
+- Arguments are the inputs in the parentheses.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -75,21 +89,26 @@ Most functions perform a calculation and 'return' the result back to you. If a f
       {
         id: 'intro-datatypes',
         title: 'Data Types',
-        visualId: 'dict-map',
+        visualId: 'variables',
         content: `1️⃣ Big picture: what is this lesson about?
-Python needs to know if a value is a whole number (int), a decimal (float), or text (str). Booleans represent True or False.
+Python treats text (str), whole numbers (int), and decimals (float) differently.
+Example:
+x = 5 # int
+y = 5.0 # float
+z = "5" # str
 
 2️⃣ Signal vs Noise (VERY IMPORTANT)
-- Signal: The correct type for the task.
-- Noise: Adding a number to a string without converting it.
-Use type() to check what you're working with.
+- Signal: Matching types for operations.
+- Noise: Adding numbers and text without converting.
+print(5 + "5") # ERROR
+print(5 + int("5")) # 10
 
 3️⃣ Conversion
-You can convert types using int(), float(), and str().
+Use str(), int(), and float() to switch between types.
 
 ✅ Final Summary
-- int: 10, float: 10.5, str: "Hello", bool: True.
-- type(x) reveals the nature of the data.`,
+- type(x) tells you what it is.
+- bool(x) tells you if it's True or False.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -108,20 +127,24 @@ You can convert types using int(), float(), and str().
         title: 'Conditionals',
         visualId: 'decision-tree',
         content: `1️⃣ Big picture: what is this lesson about?
-Conditionals let you control what code is run based on a Boolean condition (True or False).
+Making choices. if, elif, and else control the logic flow.
+Example:
+if age > 18:
+    print("Enter")
+else:
+    print("Wait")
 
 2️⃣ Signal vs Noise (VERY IMPORTANT)
-- Signal: == for comparison, = for assignment.
-- Noise: Forgetting the difference between == and =.
-Python's 'if', 'elif', and 'else' build the logic tree.
+- Signal: == for comparing, = for setting values.
+- Noise: Using = in an if statement.
 
-3️⃣ Truthiness
-Empty sequences like "" or [] are treated as False.
+3️⃣ Multiple Checks
+Use and/or to combine conditions.
+if (x > 0) and (x < 10):
+    print("In range")
 
 ✅ Final Summary
-- if condition:
-- elif another_condition:
-- else:`,
+- Logic depends on True/False values.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -142,20 +165,22 @@ Empty sequences like "" or [] are treated as False.
         title: 'Lists',
         visualId: 'list-indices',
         content: `1️⃣ Big picture: what is this lesson about?
-Lists are ordered sequences of values. They are the most common way to store a collection of data.
+Lists store items in order.
+Example:
+fruits = ["apple", "banana"]
+print(fruits[0]) # "apple"
 
 2️⃣ Signal vs Noise (VERY IMPORTANT)
-- Signal: The index (starts at 0).
-- Noise: Trying to access an index that doesn't exist.
-Negative indices count from the end (-1 is the last item).
+- Signal: Indices start at 0.
+- Noise: Trying to get fruits[2] when only 2 items exist.
 
-3️⃣ Slicing
-Use [start:end] to get a chunk of the list.
+3️⃣ Modification
+Lists are mutable (changeable).
+fruits.append("cherry")
+fruits[0] = "pear"
 
 ✅ Final Summary
-- list[0] is the first item.
-- .append() adds to the end.
-- len(list) gives the total count.`,
+- Negative indices count backwards. fruits[-1] is the last item.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -180,22 +205,31 @@ Use [start:end] to get a chunk of the list.
       {
         id: 'hello-python',
         title: 'Hello, Python!',
-        visualId: 'indentation',
+        visualId: 'division',
         content: `1️⃣ Big picture: what is this lesson about?
-A summary of Python's dynamic typing, variable assignment, and arithmetic. Named after Monty Python, we use "Spam" as a theme.
+A summary of Python's arithmetic logic. Python uses different operators for division.
+Example:
+# True Division (returns float)
+print(5 / 2) # 2.5
 
-2️⃣ Variable Assignment
-Python doesn't require "declaring" variables. You can assign a number to a variable and later reassign it to a string.
+# Floor Division (rounds down)
+print(5 // 2) # 2
 
-3️⃣ Arithmetic Operators
-Python does "True division" (/) which always returns a float, and "Floor division" (//) which rounds down.
+# Modulo (remainder)
+print(5 % 2) # 1
 
-4️⃣ Operator Overloading
-The * operator can multiply numbers OR repeat strings.
+2️⃣ Variable Swapping
+Python allows compact assignment.
+a, b = 1, 2
+a, b = b, a # Swapped!
+
+3️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: // for removing decimals.
+- Noise: Expecting / to return a whole number.
 
 ✅ Final Summary
-- type() reveals if a number is an int or a float.
-- Indentation defines code blocks.`,
+- / is for exact results.
+- // is for whole numbers.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -214,19 +248,24 @@ The * operator can multiply numbers OR repeat strings.
         title: 'Functions and Getting Help',
         visualId: 'func-scope',
         content: `1️⃣ Big picture: what is this lesson about?
-Using help() to learn about functions and defining your own with docstrings.
+Using built-in documentation and creating custom functions.
+Example:
+help(print) # Shows manual
+def mult(x, y=2): # y has a default value
+    return x * y
 
 2️⃣ Signal vs Noise (VERY IMPORTANT)
-- Signal: Meaningful docstrings.
-- Noise: Missing or cryptic documentation.
-Help() reads the "Signal" to explain code behavior.
+- Signal: Triple quotes for docstrings.
+- Noise: Not explaining what your function does.
 
-3️⃣ Higher-Order Functions
-Functions can be passed as arguments to other functions, like the 'key' argument in max().
+3️⃣ Higher Order Functions
+Functions that take other functions as arguments.
+Example:
+def apply(f, x):
+    return f(x)
 
 ✅ Final Summary
-- Use triple-quotes for docstrings.
-- Default arguments allow flexible function calls.`,
+- Docstrings are help for humans.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -246,16 +285,23 @@ Functions can be passed as arguments to other functions, like the 'key' argument
         title: 'Booleans and Conditionals',
         visualId: 'decision-tree',
         content: `1️⃣ Big picture: what is this lesson about?
-Boolean values and logic control using if, elif, and else.
+Booleans are True or False. Logic operators (and, or, not) allow complex decisions.
+Example:
+x = True
+y = False
+print(x or y) # True
 
-2️⃣ Logic Precedence
-'and' is evaluated before 'or'. Use parentheses to avoid confusing results.
+2️⃣ Precedence
+not happens first, then and, then or.
+Example:
+True or True and False # is True (and evaluated first)
 
-3️⃣ Comparison Operators
-== (equal), != (not equal), <, >, <=, >=.
+3️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: Comparison operators (==, !=).
+- Noise: Thinking 'not True and False' means 'not (True and False)'.
 
 ✅ Final Summary
-- Use bool() to see the truthiness of any object.`,
+- bool(0) is False, bool(1) is True.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -274,17 +320,20 @@ Boolean values and logic control using if, elif, and else.
         title: 'Lists',
         visualId: 'list-indices',
         content: `1️⃣ Big picture: what is this lesson about?
-Storing ordered sequences of items. Lists are mutable, while Tuples are immutable.
+Efficiently handling collections of data.
+Example:
+nums = [1, 2, 3, 4]
+print(nums[1:3]) # [2, 3] (index 1 to 2)
 
-2️⃣ Mutability
-You can change list items, but Tuples are locked.
+2️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: Tuples (x, y) are immutable and used for "fixed" data.
+- Noise: Trying to use .append() on a tuple.
 
-3️⃣ Slicing and Indexing
-Negative indexing and complex slicing [start:end:step].
+3️⃣ List Methods
+.sort(), .reverse(), .count(), .index().
 
 ✅ Final Summary
-- .append() and .pop() for stack operations.
-- in operator for search.`,
+- in operator is O(n) for lists.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -302,17 +351,25 @@ Negative indexing and complex slicing [start:end:step].
         title: 'Loops and List Comprehensions',
         visualId: 'loop-iter',
         content: `1️⃣ Big picture: what is this lesson about?
-Repeatedly executing code. List comprehensions are a beloved Python feature for concise data processing.
+Automation. List comprehensions are a faster way to build lists.
+Example:
+# Normal Loop
+sq = []
+for x in range(5):
+    sq.append(x**2)
 
-2️⃣ List Comprehensions
-The format is [expression for item in collection if condition].
+# Comprehension (Faster!)
+sq = [x**2 for x in range(5)]
 
-3️⃣ range() and while
-Use range() for fixed iterations and while loops for conditional loops.
+2️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: Comprehensions condense 4 lines into 1.
+- Noise: Over-complicating comprehensions until they're unreadable.
+
+3️⃣ Range
+range(start, stop, step) is an efficient generator.
 
 ✅ Final Summary
-- Comprehensions are faster and more readable.
-- for item in collection:`,
+- while loops for indefinite tasks, for loops for collections.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -331,17 +388,24 @@ Use range() for fixed iterations and while loops for conditional loops.
         title: 'Strings and Dictionaries',
         visualId: 'dict-map',
         content: `1️⃣ Big picture: what is this lesson about?
-Strings for text processing and Dictionaries for key-value mapping.
+Text and Mappings. Dictionaries allow O(1) fast lookup.
+Example:
+# Dictionary
+ages = {"Bob": 30, "Alice": 25}
+print(ages["Bob"]) # 30
 
-2️⃣ String Methods
-.split() to break text into lists, .join() to merge lists into text.
+# String Format
+print("Hi, {}".format("User"))
 
-3️⃣ String Formatting
-Use .format() to build complex strings with variables cleanly.
+2️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: Unique keys in dictionaries.
+- Noise: Trying to index a dictionary with a number if it uses strings as keys.
+
+3️⃣ String Methods
+.upper(), .lower(), .split(), .join().
 
 ✅ Final Summary
-- Dictionaries have unique keys.
-- .items() allows iterating over keys and values.`,
+- .items() iterates over key-value pairs.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -360,17 +424,21 @@ Use .format() to build complex strings with variables cleanly.
         title: 'Working with External Libraries',
         visualId: 'import-lib',
         content: `1️⃣ Big picture: what is this lesson about?
-Imports allow you to access thousands of high-quality libraries like math, numpy, and pandas.
+Using community code.
+Example:
+import math
+print(math.sqrt(16)) # 4.0
 
 2️⃣ Namespaces
-A module is a collection of variables (a namespace). Access them using dot syntax.
+import math as mt # Keeps code clean
+mt.pi
 
-3️⃣ Objects and Methods
-Everything in Python is an object. Use dir() and help() to discover their attributes and methods.
+3️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: Specific imports (from math import pi).
+- Noise: Star imports (from math import *) which can overwrite your own variables.
 
 ✅ Final Summary
-- import library as alias (e.g., import math as mt).
-- Operator overloading makes libraries feel native.`,
+- dir(module) shows all available functions.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -396,16 +464,19 @@ Everything in Python is an object. Use dir() and help() to discover their attrib
         title: 'How Models Work',
         visualId: 'decision-tree',
         content: `1️⃣ Big picture: what is this lesson about?
-Machine learning finds patterns in data to make predictions. We start with Decision Trees.
+Pattern recognition. Decision Trees split data by questions.
+Example:
+If (rooms > 2) -> Price = 200k
+Else -> Price = 150k
 
 2️⃣ Fitting and Training
-Capturing patterns from data is called "fitting" or "training". The result is a model.
+Training is the process where the model looks at history to find the best "split" points.
 
-3️⃣ Leaves and Splits
-A tree splits data until it reaches a "leaf", where a final prediction is made.
+3️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: True correlations (e.g., location -> price).
+- Noise: Coincidences (e.g., house number -> price).
 
 ✅ Final Summary
-- Models learn from training data.
 - Deeper trees capture more detail.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
@@ -425,14 +496,18 @@ A tree splits data until it reaches a "leaf", where a final prediction is made.
         title: 'Examine Your Data',
         visualId: 'list-indices',
         content: `1️⃣ Big picture: what is this lesson about?
-Using Pandas to load and describe data. It's the first step of any ML project.
+Loading data with Pandas. Dataframes are the core tool.
+Example:
+import pandas as pd
+df = pd.read_csv('data.csv')
+print(df.describe()) # Statistics
 
-2️⃣ DataFrames and Summary
-A DataFrame is like a table. describe() provides 8 key statistics.
+2️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: Mean, Median, and Count.
+- Noise: Missing values (NaN).
 
 ✅ Final Summary
-- import pandas as pd.
-- describe() helps spot outliers and missing data.`,
+- Use .head() to see the first 5 rows.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -450,13 +525,17 @@ A DataFrame is like a table. describe() provides 8 key statistics.
         title: 'Your First Model',
         visualId: 'import-lib',
         content: `1️⃣ Big picture: what is this lesson about?
-Building a model using sklearn. Define, Fit, Predict, Evaluate.
+Scikit-learn lifecycle: Define, Fit, Predict.
+Example:
+from sklearn.tree import DecisionTreeRegressor
+model = DecisionTreeRegressor()
+model.fit(X, y)
 
-2️⃣ Prediction Target and Features
-y is the target, X is the feature set.
+2️⃣ Reproducibility
+Use random_state to get the same results twice.
 
 ✅ Final Summary
-- random_state ensures reproducibility.`,
+- y is the prediction target. X is the features.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -474,13 +553,16 @@ y is the target, X is the feature set.
         title: 'Model Validation',
         visualId: 'loss-curves',
         content: `1️⃣ Big picture: what is this lesson about?
-Measuring model quality using MAE. Testing on training data is a common mistake.
+Measuring quality with Mean Absolute Error (MAE).
+Example:
+MAE = abs(actual - predicted) / count
 
-2️⃣ Mean Absolute Error
-Average of |actual - predicted|.
+2️⃣ Signal vs Noise (VERY IMPORTANT)
+- Signal: Validation score (unseen data).
+- Noise: Training score (memorized data).
 
 ✅ Final Summary
-- Use train_test_split to validate on unseen data.`,
+- Never test on your training data!`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -498,13 +580,16 @@ Average of |actual - predicted|.
         title: 'Underfitting and Overfitting',
         visualId: 'overfitting',
         content: `1️⃣ Big picture: what is this lesson about?
-Finding the "Sweet Spot". Overfitting is memorizing, Underfitting is failing to learn.
+The "Sweet Spot".
+Example:
+# 5 nodes = Underfit (Too simple)
+# 5000 nodes = Overfit (Too complex)
 
 2️⃣ max_leaf_nodes
-A way to control tree depth and complexity.
+Limit nodes to force the model to generalize.
 
 ✅ Final Summary
-- Lowest validation error is the goal.`,
+- Look for the lowest validation error point.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -522,13 +607,16 @@ A way to control tree depth and complexity.
         title: 'Random Forests',
         visualId: 'multi-var',
         content: `1️⃣ Big picture: what is this lesson about?
-Averaging many trees for better accuracy and stability.
+Ensemble Learning. Averaging many trees.
+Example:
+from sklearn.ensemble import RandomForestRegressor
+model = RandomForestRegressor()
 
-2️⃣ Random Forests
-Robust models that work well with defaults.
+2️⃣ Wisdom of the Crowd
+Individual trees make random errors, but the average is robust.
 
 ✅ Final Summary
-- Ensemble models use group wisdom.`,
+- Forests work better than single trees with default settings.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -554,19 +642,18 @@ Robust models that work well with defaults.
         title: 'The Linear Unit',
         visualId: 'neuron',
         content: `1️⃣ Big picture: what is this lesson about?
-We begin with the fundamental component of a neural network: the individual neuron. A neuron with one input performs a simple linear computation: y = wx + b.
+A single neuron: y = wx + b.
+Example:
+weight = 2
+bias = 5
+input = 10
+y = 2 * 10 + 5 # 25
 
-2️⃣ Signal vs Noise (VERY IMPORTANT)
-- Signal: The 'weights' (w) which determine the importance of an input.
-- Noise: Random initialization before training.
-A neural network "learns" by modifying its weights to isolate patterns from data.
-
-3️⃣ Bias and Multiple Inputs
-The bias (b) allows a neuron to modify output independently of inputs. For multiple inputs, we sum them all up: y = w0x0 + w1x1 + ... + b.
+2️⃣ Weights
+Weights represent how "loud" an input signal is.
 
 ✅ Final Summary
-- Neurons are the building blocks of Deep Learning.
-- Single neuron models are simple linear models (lines, planes, hyperplanes).`,
+- Neurons sum weighted inputs.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -587,17 +674,18 @@ The bias (b) allows a neuron to modify output independently of inputs. For multi
         title: 'Deep Neural Networks',
         visualId: 'indentation',
         content: `1️⃣ Big picture: what is this lesson about?
-Modularity is key. By stacking simpler functional units into layers, we can build complex models.
+Stacking layers.
+Example:
+model = keras.Sequential([
+    layers.Dense(units=4, activation='relu', input_shape=[2]),
+    layers.Dense(units=1)
+])
 
-2️⃣ The Dense Layer
-When we collect together linear units having a common set of inputs, we get a Dense Layer. A deep stack of layers allows the network to transform data in increasingly complex ways.
-
-3️⃣ Activation Functions
-Without activation functions, neural networks are just linear models. The Rectified Linear Unit (ReLU) function max(0, x) adds the necessary nonlinearity to fit curves.
+2️⃣ ReLU
+ReLU(x) = max(0, x). It lets the network fit non-linear curves.
 
 ✅ Final Summary
-- Sequential models connect layers in order.
-- Hidden layers are the layers between input and output.`,
+- Layers before the output are 'hidden'.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -617,17 +705,17 @@ Without activation functions, neural networks are just linear models. The Rectif
         title: 'Stochastic Gradient Descent',
         visualId: 'loop-iter',
         content: `1️⃣ Big picture: what is this lesson about?
-How neural networks learn. We use an Optimizer to adjust weights based on a Loss Function.
+How weights update.
+Example:
+1. Load batch
+2. Calculate Loss
+3. Adjust Weights
 
-2️⃣ Loss Functions
-The Loss Function measures the disparity between true targets and model predictions. For regression, we commonly use Mean Absolute Error (MAE).
-
-3️⃣ The Optimizer (SGD)
-Stochastic Gradient Descent is an iterative algorithm that trains the network in minibatches. Adam is a great general-purpose optimizer that is self-tuning.
+2️⃣ Learning Rate
+Controls how "big" of a step we take toward the solution.
 
 ✅ Final Summary
-- Epoch: One complete pass through the training data.
-- Batch: A small sample of training data used for one weight update.`,
+- Adam is an adaptive optimizer.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -647,17 +735,14 @@ Stochastic Gradient Descent is an iterative algorithm that trains the network in
         title: 'Overfitting and Underfitting',
         visualId: 'loss-curves',
         content: `1️⃣ Big picture: what is this lesson about?
-Interpreting learning curves. We want to distinguish between 'signal' (general patterns) and 'noise' (random fluctuations).
+Interpreting the gap between training loss and validation loss.
 
 2️⃣ Signal vs Noise
-Training loss decreases with both signal and noise. Validation loss only decreases when the model learns signal. A gap between the curves indicates noise/overfitting.
-
-3️⃣ Early Stopping
-To prevent overfitting, we stop training when validation loss stops decreasing. This finds the "Sweet Spot".
+- Signal generalizes (both curves down).
+- Noise memorizes (only training curve down).
 
 ✅ Final Summary
-- Increase Capacity (wider/deeper) to fix underfitting.
-- Use Early Stopping to fix overfitting.`,
+- Use Early Stopping to halt at the minimum validation loss.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -677,17 +762,15 @@ To prevent overfitting, we stop training when validation loss stops decreasing. 
         title: 'Dropout and Batch Normalization',
         visualId: 'signal-noise',
         content: `1️⃣ Big picture: what is this lesson about?
-Advanced layers to improve model stability and generalization.
+Stability.
+Example:
+layers.Dropout(rate=0.3) # 30% neurons turned off randomly
 
-2️⃣ Dropout
-Randomly "dropping out" neurons during training to break up "conspiracies" of weights. This forces the network to learn more robust, general patterns.
-
-3️⃣ Batch Normalization
-Rescaling activations within the network to stabilize training. It coordinates the scale of features and helps prevent training from getting stuck.
+2️⃣ Batch Normalization
+Rescaling data inside the network so SGD runs smoother.
 
 ✅ Final Summary
-- Dropout corrects overfitting.
-- Batchnorm corrects slow or unstable training.`,
+- Dropout breaks up "conspiracies" between neurons.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,
@@ -709,17 +792,16 @@ Rescaling activations within the network to stabilize training. It coordinates t
         title: 'Binary Classification',
         visualId: 'decision-tree',
         content: `1️⃣ Big picture: what is this lesson about?
-Applying neural networks to predict one of two classes (Yes/No, 0/1).
+Predicting classes (0 or 1).
+Example:
+# Final layer for classification
+layers.Dense(1, activation='sigmoid')
 
-2️⃣ Cross-Entropy and Accuracy
-Accuracy is intuitive but poor for SGD. We use Cross-Entropy as a loss function because it measures the distance between probability distributions.
-
-3️⃣ The Sigmoid Function
-To turn raw numbers into probabilities (0 to 1), we use the Sigmoid activation in the final layer.
+2️⃣ Cross-Entropy
+Loss function for probability-based predictions.
 
 ✅ Final Summary
-- Final layer: layers.Dense(1, activation='sigmoid').
-- loss: 'binary_crossentropy', metrics: ['binary_accuracy'].`,
+- Sigmoid squashes output between 0 and 1.`,
         tasks: Array.from({ length: 15 }, (_, i) => ({
           id: `task_${i + 1}`,
           description: `Task ${i + 1}`,

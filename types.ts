@@ -20,6 +20,7 @@ export interface LessonSection {
   tasks: Task[];
   visualId?: 
     | 'arithmetic' 
+    | 'division'
     | 'variables' 
     | 'decision-tree' 
     | 'loss-curves' 
