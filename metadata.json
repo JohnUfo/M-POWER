@@ -1,0 +1,8 @@
+{
+  "name": "CodeMaster AI Academy",
+  "description": "An interactive learning platform for Python, Machine Learning, and Deep Learning, featuring AI-powered code execution simulation.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
